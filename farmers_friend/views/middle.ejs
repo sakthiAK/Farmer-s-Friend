@@ -1,0 +1,211 @@
+
+<html>
+  <head>
+    <title>Firstpage</title>
+
+<script>
+
+        function fileValidation() {
+            var fileInput = 
+                document.getElementById('file');
+              
+            var filePath = fileInput.value;
+          
+            // Allowing file type
+            var allowedExtensions = 
+                    /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+              
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Invalid file type');
+                fileInput.value = '';
+                return false;
+            } 
+            else 
+            {
+              
+              myFunction();
+                // Image preview
+                if (fileInput.files && fileInput.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById(
+                            'imagePreview').innerHTML = 
+                            '<img src="' + e.target.result
+                            + '"/>';
+                    };
+                      
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+        }
+
+      function myFunction()
+{
+ alert('your file is saved successfully');
+ document.getElementById("myForm").submit();
+      
+}
+    </script>
+  <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #eee;
+      }
+      body {
+      background: url("/images/home.jpeg") no-repeat center;
+      background-size: cover;
+      }
+      h1, h2 {
+      text-transform: uppercase;
+      font-weight: 400;
+      }
+      h2 {
+      margin: 0 0 0 8px;
+      }
+      .main-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 25px 350px;
+      background: rgba(0, 0, 0, 0.5); 
+      }
+      .left-part, form {
+      padding: 25px;
+      }
+      .left-part {
+      text-align: center;
+      }
+      .fa-graduation-cap {
+      font-size: 72px;
+      }
+      form {
+      background: rgba(0, 0, 0, 0.7); 
+      }
+      .title {
+      display: flex;
+      margin-bottom: 20px;
+      }
+      .info {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40;
+      }
+      input, select {
+      padding: 5px;
+      margin-bottom: 30px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #eee;
+      margin-top: 10;
+      }
+      input::placeholder {
+      color: #eee;
+      }
+      option:focus {
+      border: none;
+      }
+      option {
+      background: black; 
+      border: none;
+      }
+      .checkbox input {
+      margin: 0 10px 0 0;
+      vertical-align: middle;
+      }
+      .checkbox a {
+      color: #26a9e0;
+      }
+      .checkbox a:hover {
+      color: #85d6de;
+      }
+      .btn-item, button {
+      padding: 30px 100px;
+      margin-top: 25px;
+      border-radius: 50px; 
+      border: none;
+      background: #26a9e0; 
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 400;
+      color: #fff;
+      cursor:pointer;
+    
+      }
+      .btn-item {
+      display: inline-block;
+      margin: 20px 50px 0;
+      }
+      button {
+      width: 100%;
+      }
+      button:hover, .btn-item:hover {
+      background: #85d6de;
+      }
+      @media (min-width: 568px) {
+      html, body {
+      height: 100%;
+      }
+      .main-block {
+      flex-direction: row;
+      height: calc(100% - 50px);
+      }
+      .left-part, form {
+      flex: 1;
+      height: auto;
+      }
+      }
+label {
+color:white;
+height:60px;
+width: 250px;
+background-color:#26a9e0;
+position: absolute;
+margin: 156px 375px;
+border-radius: 50px;
+padding: 10px 150px;
+top:0;
+bottom: 0;
+left:0;
+right:0;
+font-size: 20px;
+display:flex;
+justify-content: center;
+align-items:center;
+font-family:"Montserrat",sans-serif;
+cursor: pointer;
+}
+
+input[type="file"]
+{
+display: none;
+
+
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="main-block">
+      <div class="left-part">
+     <form id="myForm" action="/handwrite "  method="POST" enctype="multipart/form-data">
+    <input type="file" id="file" name="file"  onchange="return myFunction()"  >
+<label for="file" > upload image </label>
+</form>
+
+   
+    <button onClick="window.location='/voice';">voice</button>
+
+    <button onClick="window.location='/display';">saved documents</button>
+
+</div>
+  </body>
+</html>

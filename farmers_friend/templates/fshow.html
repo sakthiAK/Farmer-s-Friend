@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+       window.localStorage.setItem('phone_no',$phno );
+
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+        
+            var reader = new FileReader();
+        
+            reader.onload = function(e) {
+              $('.image-upload-wrap').hide();
+        
+              $('.file-upload-image').attr('src', e.target.result);
+              $('.file-upload-content').show();
+        
+              $('.image-title').html(input.files[0].name);
+            };
+        
+            reader.readAsDataURL(input.files[0]);
+        
+          } else {
+            removeUpload();
+          }
+        }
+        
+        function removeUpload() {
+          $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+          $('.file-upload-content').hide();
+          $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function () {
+                $('.image-upload-wrap').addClass('image-dropping');
+            });
+            $('.image-upload-wrap').bind('dragleave', function () {
+                $('.image-upload-wrap').removeClass('image-dropping');
+        });
+        
+        function myFunction() {
+          document.getElementById("myForm").submit();
+          }
+
+
+
+
+        
+        </script>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+
+body {
+  font-family: sans-serif;
+  background-image:url("{{url_for('static',filename='bg.jpg')}}");
+  background-repeat:no-repeat;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 150px; /* Should be removed. Only for demonstration */
+}
+
+.column1 {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 150px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  margin:10px;
+}
+
+
+.middle
+{
+  
+  border: 5px ;
+  background-color: lightblue;    
+  text-align: center;
+
+}
+
+
+.submit {
+  width: 50%;
+  margin-top: 45px;
+  margin-left:340px;
+  color: #fff;
+  background: #1FB264;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid #15824B;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.submit:hover {
+  background: #1AA059;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.btn-item, button {
+      padding: 10px 5px;
+      margin-top: 20px;
+      margin-left: 100px;
+      border-radius: 5px; 
+      border: none;
+      background: #26a9e0; 
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 400;
+      color: #fff;
+      }
+      .btn-item {
+      display: inline-block;
+      margin: 20px 5px 0;
+      }
+      button {
+      width: 75%;
+      }
+      button:hover, .btn-item:hover {
+      background: #85d6de;
+      }
+      a {
+      color: rgb(243, 247, 243);
+     text-decoration:none;
+       }
+
+
+
+h1{
+background-color:rgb(224, 213, 222);
+color:brown;
+text-align:center;
+font-family:coperlate;
+}
+
+p{
+text-align:right;
+font-family:coperlate;
+font-size:25px;
+color:black;
+}
+
+.p1{
+text-align:left;
+font-family:coperlate;
+font-size:25px;
+color:brown;
+}
+
+
+
+
+</style>
+</head>
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<h1>My Informations</h1>
+<body>
+    {% for i in lsobj %}
+    <div class="row" style="background-color:rgb(53, 220, 226);">
+        <div class="column" style="background-color:#aaa;">
+            <h2>User Information</h2>
+            <p>Some text..</p>
+          </div>
+          <div class="column" style="background-color:#bbb;">
+            <h2>  {{i.get('item_name')}}</h2>
+        <h2>{{i.get('cost')}}</h2>
+          </div>
+         
+      </div>
+      {% endfor %}
+    
+   
+    
+    
+     <center><button  ><a href="/fmiddle">Back To MainMenu</a></button></center> 
+                
+</body>
+</html>

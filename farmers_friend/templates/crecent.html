@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+       window.localStorage.setItem('phone_no',$phno );
+
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+        
+            var reader = new FileReader();
+        
+            reader.onload = function(e) {
+              $('.image-upload-wrap').hide();
+        
+              $('.file-upload-image').attr('src', e.target.result);
+              $('.file-upload-content').show();
+        
+              $('.image-title').html(input.files[0].name);
+            };
+        
+            reader.readAsDataURL(input.files[0]);
+        
+          } else {
+            removeUpload();
+          }
+        }
+        
+        function removeUpload() {
+          $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+          $('.file-upload-content').hide();
+          $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function () {
+                $('.image-upload-wrap').addClass('image-dropping');
+            });
+            $('.image-upload-wrap').bind('dragleave', function () {
+                $('.image-upload-wrap').removeClass('image-dropping');
+        });
+        
+        function myFunction() {
+          document.getElementById("myForm").submit();
+          }
+
+
+
+
+        
+        </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+
+body {
+  font-family: sans-serif;
+  background-image:url("{{url_for('static',filename='bg.jpg')}}");
+  background-repeat:no-repeat;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+  height: 180px; /* Should be removed. Only for demonstration */
+}
+
+.column1 {
+  float: left;
+  width: 50%;
+  padding: 5px;
+  height: 180px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  margin:10px;
+}
+
+
+.middle
+{
+  
+  border: 5px ;
+  background-color: lightblue;    
+  text-align: center;
+
+}
+
+
+
+
+h1{
+background-color:rgb(224, 213, 222);
+color:brown;
+text-align:center;
+font-family:coperlate;
+}
+
+p{
+text-align:center;
+font-family:coperlate;
+font-size:25px;
+color:black;
+}
+
+.p1{
+text-align:left;
+font-family:coperlate;
+font-size:25px;
+color:brown;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.but {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 50px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.but2 {
+  margin:40px;
+  background-color: #26a9e0; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.but2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+a {
+  color: rgb(11, 12, 11);
+  text-decoration:none;
+}
+
+
+
+</style>
+</head>
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<h1>FARMERS FRIEND</h1>
+<body>
+    <p> {{msg}}</p>
+    {% for i in lsobj %}
+    <form action="/cdrop" name="myform" method="POST">
+    <div class="row" >
+        <div class="column" style="background-color:#aaa;">
+            <h2><p>Seller_Id:{{i.get('seller_id')}}</p>  </h2>
+            <h2><p>itemname:{{i.get('item_name')}}</p>  </h2>
+        <h2><p>cost:{{i.get('cost')}}</p></h2>
+          </div>
+          <div class="column1" style="background-color:#bbb;">
+          
+        <input type ="hidden" name ="item" value ={{i.get('item_name')}}>
+        <center> <button type="submit" class="but but2">Drop Item</button></center>
+      
+          </div>
+         
+      </div>
+    </form>
+    <br />
+      {% endfor %}
+
+   
+     
+    
+    
+    <center><p>Total Amount Is : {{total}}</p></center>
+
+
+    <div class="row">
+      <div class="column">
+        <center><button class="but but2"  ><a href="/backtopurchase">Back To Purchase</a></button></center> 
+      </div>
+      <div class="column1" >
+     <form  action="/placemyorder" method="POST">
+      <center> <button type="submit" class="but but2">Place MY Orders</button></center>
+     </form>
+      </div>
+    </div>
+    
+    
+                
+</body>
+</html>

@@ -1,0 +1,122 @@
+
+<html>
+  <head>
+    <title>Farmer's first page</title>
+  <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #eee;
+      }
+      
+      .button {
+        background-color: #1c87c9;
+        border: none;
+        color: white;
+        padding: 20px 34px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 4px 2px;
+        cursor: pointer;
+       margin-top:20;
+      }
+      body {
+      background: url("/images/images.jpeg") no-repeat center;
+      background-size: cover;
+      }
+      h1, h2 {
+      text-transform: uppercase;
+      font-weight: 400;
+      }
+      h2 {
+      margin: 0 0 0 8px;
+      }
+      .main-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 25px 350px;
+      background: rgba(0, 0, 0, 0.5); 
+      }
+      .left-part, form {
+      padding: 25px;
+      }
+      
+
+      form {
+      background: rgba(0, 0, 0, 0.7); 
+      }
+      .title {
+      display: flex;
+      margin-bottom: 20px;
+      }
+      .info {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40;
+      }
+      input, select {
+      padding: 5px;
+      margin-bottom: 30px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #eee;
+      margin-top: 60;
+      }
+      input::placeholder {
+      color: #eee;
+      }
+     
+      @media (min-width: 568px) {
+      html, body {
+      height: 100%;
+      }
+      .main-block {
+      flex-direction: row;
+      height: calc(100% - 50px);
+      }
+      .left-part, form {
+      flex: 1;
+      height: auto;
+      }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="main-block">
+
+      <div class="left-part">
+
+ 
+      <form >
+        
+       
+         <center><h2>  <center>Farmer's Friend</center></h2>
+       
+
+        <div class="info">
+ <a href="/fadd" class="button">Add item</a>
+
+<a href="/fupdate" class="button">Update item</a>
+
+<a href="/fdelete" class="button">Remove item</a>
+
+
+
+
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
